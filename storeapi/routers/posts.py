@@ -2,7 +2,6 @@ import logging
 from typing import List
 
 from fastapi import APIRouter, HTTPException
-
 from storeapi.database import comment_table, database, post_table
 from storeapi.models.post import (
     Comment,
@@ -46,7 +45,7 @@ async def get_all_posts():
 
     query = post_table.select()
 
-    logger.debug(query)
+    logger.debug(query, extra={"email": "bobo@gmail.com"})
 
     return await database.fetch_all(query)
 
